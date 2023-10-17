@@ -1,11 +1,15 @@
 package com.example.springtutorial.controller;
 
+import com.example.springtutorial.models.Person;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class tutorialController {
@@ -42,5 +46,20 @@ public class tutorialController {
         // http://localhost:8080/test4?message=HeyPepper
         model.addAttribute("message", message);
         return "helloPage";
+    }
+
+    @GetMapping("/people")
+    public String showFriends(Model model) {
+
+        List<Person> friends = new ArrayList<Person>();
+        friends.add(new Person(0,"Allan", 23, 142f));
+        friends.add(new Person(1,"Bella", 29, 122f));
+        friends.add(new Person(2,"Charles", 35, 150f));
+        friends.add(new Person(3,"Doris", 40, 115f));
+        System.out.println(friends);
+
+        model.addAttribute("people", friends);
+        // return the helloPage.html in templates
+        return "printFriends";
     }
 }
