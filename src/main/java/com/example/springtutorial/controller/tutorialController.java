@@ -62,4 +62,22 @@ public class tutorialController {
         // return the helloPage.html in templates
         return "printFriends";
     }
+
+    @GetMapping("/peopleJSON")
+    @ResponseBody
+    // Not a template; a response
+    // would need to have a separate FE Angular or React
+    public List<Person> showFriendsJSON(Model model) {
+
+        List<Person> friends = new ArrayList<Person>();
+        friends.add(new Person(0,"Allan", 23, 142f));
+        friends.add(new Person(1,"Bella", 29, 122f));
+        friends.add(new Person(2,"Charles", 35, 150f));
+        friends.add(new Person(3,"Doris", 40, 115f));
+        System.out.println(friends);
+
+        model.addAttribute("people", friends);
+        // return the helloPage.html in templates
+        return friends;
+    }
 }

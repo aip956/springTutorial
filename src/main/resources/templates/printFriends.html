@@ -37,6 +37,12 @@
 						<th>
 							Weight
 						</th>
+						<th>
+							Edit
+						</th>
+						<th>
+							Delete
+						</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -52,6 +58,12 @@
 						</td>
 						<td th:text="${p.weight}">
 							Default
+						</td>
+						<td>
+							<a th:href="@{'/edit/' + ${p.id}}" class="btn btn-primary">Edit</a>
+						</td>
+						<td>
+							<a th:href="@{'/delete/' + ${p.id}}" class="btn btn-danger">Delete</a>
 						</td>
 					</tr>
 
